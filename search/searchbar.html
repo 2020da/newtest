@@ -1,1 +1,35 @@
-an apple.
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Search Example</title>
+  </head>
+  <body>
+    <input type="text" id="searchInput" placeholder="Search...">
+    <button onclick="search()">Search</button>
+    <ul id="results"></ul>
+
+    <script>
+      function search() {
+        // 검색어 가져오기
+        const searchQuery = document.getElementById('searchInput').value;
+        
+        // 검색 결과 초기화
+        const resultsElement = document.getElementById('results');
+        resultsElement.innerHTML = '';
+
+        // 검색 폴더 내의 파일들
+        const files = ['apple.html', 'banana.html'];
+
+        // 검색어와 일치하는 파일 찾기
+        const searchResults = files.filter(file => file.includes(searchQuery));
+
+        // 검색 결과 표시
+        searchResults.forEach(result => {
+          const resultElement = document.createElement('li');
+          resultElement.textContent = result;
+          resultsElement.appendChild(resultElement);
+        });
+      }
+    </script>
+  </body>
+</html>
